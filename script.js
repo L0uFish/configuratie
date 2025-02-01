@@ -2073,18 +2073,19 @@ document.addEventListener("DOMContentLoaded", function () {
 		  
 		  extraOptions.forEach(opt => {
 			const elem = document.getElementById(opt.elementId);
-			const found = response.data.some(item => item.code === opt.code);
-			if (found && elem) {
-			  if (opt.isCheckbox) {
-				elem.checked = true;
-				console.log(`Checkbox '${opt.elementId}' checked (code ${opt.code} found)`);
-			  } else {
-				elem.value = opt.code;
-				console.log(`Text input '${opt.elementId}' set to ${opt.code}`);
-			  }
-			  usedItems.add(opt.code);
+			const item = response.data.find(entry => entry.code === opt.code);
+			
+			if (item && elem) {
+				if (opt.isCheckbox) {
+					elem.checked = true;
+					console.log(`Checkbox '${opt.elementId}' checked (code ${opt.code} found)`);
+				} else {
+					elem.value = item.amount;  // Use the amount instead of the code
+					console.log(`Text input '${opt.elementId}' set to amount ${item.amount}`);
+				}
+				usedItems.add(opt.code);
 			}
-		  });
+		});
 		}
 
 
