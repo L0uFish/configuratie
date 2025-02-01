@@ -2198,9 +2198,40 @@ highlightEmptyFields();
 			}
 		  }
 		}
-
-
 	  } // end callback
     ); // end runtime.sendMessage
   }); // end loadDataButton click
+  
+  // -----------------------------------
+  // 	photo upload
+  // -----------------------------------
+  
+		  const upload2D = document.getElementById("upload-2d-photo");
+		  const preview2D = document.getElementById("preview-2d-photo");
+		  upload2D.addEventListener("change", function (event) {
+			const file = event.target.files[0];
+			if (file) {
+			  console.log("2D File selected:", file);
+			  const img = document.createElement("img");
+			  img.src = URL.createObjectURL(file);
+			  img.alt = "2D Uploaded Preview";
+			  preview2D.innerHTML = "";
+			  preview2D.appendChild(img);
+			}
+		  });
+
+		  const upload3D = document.getElementById("upload-3d-photo");
+		  const preview3D = document.getElementById("preview-3d-photo");
+		  upload3D.addEventListener("change", function (event) {
+			const file = event.target.files[0];
+			if (file) {
+			  console.log("3D File selected:", file);
+			  const img = document.createElement("img");
+			  img.src = URL.createObjectURL(file);
+			  img.alt = "3D Uploaded Preview";
+			  preview3D.innerHTML = "";
+			  preview3D.appendChild(img);
+			}
+		  });
+  
 }); // end DOMContentLoaded
