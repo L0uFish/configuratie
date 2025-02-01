@@ -2062,35 +2062,37 @@ document.addEventListener("DOMContentLoaded", function () {
 		  // For each extra installation option, if its code is found in response.data,
 		  // then check the corresponding checkbox or set the text input value.
 		  const extraOptions = [
-			{ code: "890.0220.25SH", elementId: "extra-uren", isCheckbox: false },
-			{ code: "890.0220.30NB", elementId: "meubel", isCheckbox: true },
-			{ code: "890.0440.00DT", elementId: "toilet", isCheckbox: true },
-			{ code: "890.0222.05NB", elementId: "douchetoilet", isCheckbox: true },
-			{ code: "320.5030.08NB", elementId: "prefab", isCheckbox: true },
-			{ code: "890.0222.04NB", elementId: "radiator", isCheckbox: true },
-			{ code: "890.0225.20NB", elementId: "ladderlift", isCheckbox: true }
-		  ];
-		  
-		  extraOptions.forEach(opt => {
-			const elem = document.getElementById(opt.elementId);
-			const found = response.data.some(item => item.code === opt.code);
-			if (found && elem) {
-			  if (opt.isCheckbox) {
-				elem.checked = true;
-				console.log(`Checkbox '${opt.elementId}' checked (code ${opt.code} found)`);
-			  } else {
-				elem.value = opt.code;
-				console.log(`Text input '${opt.elementId}' set to ${opt.code}`);
+			  { code: "890.0220.25SH", elementId: "extra-uren", isCheckbox: false },
+			  { code: "890.0220.30NB", elementId: "meubel", isCheckbox: true },
+			  { code: "890.0440.00DT", elementId: "toilet", isCheckbox: true },
+			  { code: "890.0222.05NB", elementId: "douchetoilet", isCheckbox: true },
+			  { code: "320.5030.08NB", elementId: "prefab", isCheckbox: true },
+			  { code: "890.0222.04NB", elementId: "radiator", isCheckbox: true },
+			  { code: "890.0225.20NB", elementId: "ladderlift", isCheckbox: true }
+			];
+
+			extraOptions.forEach(opt => {
+			  const elem = document.getElementById(opt.elementId);
+			  // Use find to retrieve the full item (not just a boolean)
+			  const dataItem = response.data.find(item => item.code === opt.code);
+			  
+			  if (dataItem && elem) {
+				if (opt.isCheckbox) {
+				  elem.checked = true;
+				  console.log(`Checkbox '${opt.elementId}' checked (code ${opt.code} found)`);
+				} else {
+				  // Set the text input value to the amount from the data
+				  elem.value = dataItem.amount;
+				  console.log(`Text input '${opt.elementId}' set to amount ${dataItem.amount}`);
+				}
+				usedItems.add(opt.code);
 			  }
-			  usedItems.add(opt.code);
-			}
-		  });
-		}
+			});
 
 
-// ---------
-// 3 Highlight Empty Fields & Unchecked Checkboxes
-// ---------
+		// ---------
+		// 3 Highlight Empty Fields & Unchecked Checkboxes
+		// ---------
 function highlightEmptyFields() {
   // Select all input, select, and textarea elements on the page.
   const fields = document.querySelectorAll("input, select, textarea");
@@ -2215,7 +2217,6 @@ highlightEmptyFields();
 				}
 			});
 		}
-
 		clientNumberInputs.forEach(input => {
 			input.addEventListener("input", syncClientNumberInput);
 		});
@@ -2233,7 +2234,6 @@ highlightEmptyFields();
 				}
 			});
 		}
-
 		advisorInputs.forEach(input => {
 			input.addEventListener("input", syncAdvisorInput);
 		});
