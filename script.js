@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	  const mm = String(today.getMonth() + 1).padStart(2, '0'); // getMonth() is zero-based
 	  const yyyy = today.getFullYear();
 	  const formattedDate = `${dd}-${mm}-${yyyy}`;
-
+	  
 	  // Update all signature date labels
 	  const signatureDateLabels = document.querySelectorAll(".signature-date label");
 	  signatureDateLabels.forEach(label => {
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		  let actualClientName = typeof response.clientName === "object" 
 			  ? response.clientName.clientName 
 			  : response.clientName;
-
+		  
 		  const nameInputs = document.querySelectorAll(".input-group .client-name + input");
 		  nameInputs.forEach((inp) => {
 			inp.value = actualClientName;
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		// === Fill Collection Name ===
 		if (response && response.clientName && response.clientName.collectionName) {
 		  let actualCollectionName = response.clientName.collectionName;
-
+		  
 		  // Select all inputs that immediately follow a label with class "collectienaam"
 		  const collectionInputs = document.querySelectorAll("label.collectienaam + input");
 		  collectionInputs.forEach(inp => {
@@ -1953,7 +1953,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
         }
-
+		
 		// -------------------------------------
 		// 2.6 Douchestoel
 		// -------------------------------------
@@ -2008,7 +2008,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			  usedItems.add("890.0220.00NB");
 			}
 		  }
-
+		  
 		  // 2.7.2 Core assortiment:
 		  // If the code "890.1070.23DI" is present, check the core-assortment checkbox.
 		  const coreAssortment = document.getElementById("core-assortiment");
@@ -2020,7 +2020,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			  usedItems.add("890.1070.23DI");
 			}
 		  }
-
+		  
 		  // 2.7.3 Douchestoel (stoel-notes):
 		  // If the douchestoel-code field contains one of the specified codes, check the stoel-notes checkbox.
 		  const douchestoelCodeField = document.getElementById("douchestoel-code");
@@ -2033,7 +2033,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			  usedItems.add(code);
 			}
 		  }
-
+		  
 		  // 2.7.4 Garantie:
 		  // Set the Garantie select to "5 jaar 890.0113.00SA" by default.
 		  const garantieSelect = document.getElementById("garantie");
@@ -2041,7 +2041,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			garantieSelect.value = "5 jaar 890.0113.00SA";
 			console.log("Garantie set to 5 jaar 890.0113.00SA");
 		  }
-
+		  
 		  // 2.7.5 Type select:
 		  // If the code "890.0225.10BE" is present then set type to option B, else option A.
 		  const typeSelect = document.getElementById("type");
@@ -2057,7 +2057,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				console.log("Type set to option A (default)");
 			  }
 			}
-
+		  
 		  // 2.7.6 Additional extra options (checkboxes and a text input):
 		  // For each extra installation option, if its code is found in response.data,
 		  // then check the corresponding checkbox or set the text input value.
@@ -2070,7 +2070,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			{ code: "890.0222.04NB", elementId: "radiator", isCheckbox: true },
 			{ code: "890.0225.20NB", elementId: "ladderlift", isCheckbox: true }
 		  ];
-
+		  
 		  extraOptions.forEach(opt => {
 			const elem = document.getElementById(opt.elementId);
 			const found = response.data.some(item => item.code === opt.code);
@@ -2190,9 +2190,9 @@ highlightEmptyFields();
 			  row.querySelector('input[name="article"]').value = item.code;
 			  row.querySelector('input[name="description"]').value = item.description;
 			  row.querySelector('input[name="quantity"]').value = item.amount;
-
+			  
 			  console.log("Extra product filled:", item.code, item.description, item.amount);
-
+			  
 			  // Mark the item as used.
 			  usedItems.add(item.code);
 			}
@@ -2201,14 +2201,12 @@ highlightEmptyFields();
 	  } // end callback
     ); // end runtime.sendMessage
   }); // end loadDataButton click
-
-  // -----------------------------------
-  // 	photo upload
-  // -----------------------------------
+  
 		// ------------------------------
 		// Sync "client-number" inputs
 		// ------------------------------
 		const clientNumberInputs = document.querySelectorAll(".client-number + input");
+
 		function syncClientNumberInput(event) {
 			const value = event.target.value;
 			clientNumberInputs.forEach(input => {
@@ -2217,13 +2215,16 @@ highlightEmptyFields();
 				}
 			});
 		}
+
 		clientNumberInputs.forEach(input => {
 			input.addEventListener("input", syncClientNumberInput);
 		});
+
 		// ------------------------------
 		// Sync "advisor" inputs
 		// ------------------------------
 		const advisorInputs = document.querySelectorAll(".advisor + input");
+
 		function syncAdvisorInput(event) {
 			const value = event.target.value;
 			advisorInputs.forEach(input => {
@@ -2232,6 +2233,7 @@ highlightEmptyFields();
 				}
 			});
 		}
+
 		advisorInputs.forEach(input => {
 			input.addEventListener("input", syncAdvisorInput);
 		});
@@ -2239,7 +2241,7 @@ highlightEmptyFields();
 	// -----------------------------------
 	// 	photo upload
 	// -----------------------------------
-
+  
 		  const upload2D = document.getElementById("upload-2d-photo");
 		  const preview2D = document.getElementById("preview-2d-photo");
 		  upload2D.addEventListener("change", function (event) {
@@ -2267,5 +2269,5 @@ highlightEmptyFields();
 			  preview3D.appendChild(img);
 			}
 		  });
-
+  
 }); // end DOMContentLoaded
