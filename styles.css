@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+	font-family: Arial, sans-serif;
 }
 
 /* Ensure Full-Page Height */
@@ -21,7 +21,7 @@ html, body {
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #f0f0f0;
     border: 1px solid #ddd;
     border-radius: 5px;
     flex: 1; /* Fills the available vertical space */
@@ -91,15 +91,52 @@ html, body {
     font-size: 16px;
 }
 
+
+
 /* Details Grid */
 .details-grid {
     display: flex;
     justify-content: space-between;
     gap: 20px;
+	margin-bottom: -5px;
+}
+
+.form-row-rolstoel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 22px; /* Adjust spacing under "Lengte" */
+}
+
+.form-row-rolstoel select {
+    max-width: 80px; /* Same width as HOH dropdown */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #133e46;
+    background-color: #ffffff;
 }
 
 .details-section {
     flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.form-row-hoh {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 4px;
+}
+
+.details-section .form-row select {
+	width: 80px;
+	margin-left: 62px;
+}
+
+.section-header {
+	width: 100%;
 }
 
 .details-section .form-row {
@@ -107,22 +144,44 @@ html, body {
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
+	flex-wrap: wrap;
 }
 
 .details-section label {
     font-weight: bold;
-    min-width: 180px;
 }
 
-.details-section input,
+
+.details-section input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #133e46;
+    background-color: #ffffff;
+	max-width: 80px;
+}
+
+
 .details-section select {
-    flex: 1;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
     color: #133e46;
     background-color: #ffffff;
 }
+
+.double-row {
+    display: flex;
+	justify-content: Center;
+	width: 100%;
+    gap: 70px;
+}
+
+
+
+
+
+
 
 /* Checkbox Alignment */
 .checkbox-group {
@@ -635,6 +694,10 @@ input[type="checkbox"]:checked::before {
     }
 }
 
+#download-pdf {
+	border: none;
+}
+
 /* Red border for error highlighting */
 .error-highlight {
   border: 2px solid #7fa4a1 !important;
@@ -645,6 +708,7 @@ input[type="checkbox"]:checked::before {
   .error-highlight {
     border: none !important;
   }
+  
 }
 
 
