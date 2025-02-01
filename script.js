@@ -2265,33 +2265,41 @@ highlightEmptyFields();
 	// 	photo upload
 	// -----------------------------------
   
-		  const upload2D = document.getElementById("upload-2d-photo");
-		  const preview2D = document.getElementById("preview-2d-photo");
-		  upload2D.addEventListener("change", function (event) {
-			const file = event.target.files[0];
-			if (file) {
-			  console.log("2D File selected:", file);
-			  const img = document.createElement("img");
-			  img.src = URL.createObjectURL(file);
-			  img.alt = "2D Uploaded Preview";
-			  preview2D.innerHTML = "";
-			  preview2D.appendChild(img);
-			}
-		  });
+		  function handleImageUpload(uploadInput, previewDiv, uploadLabel) {
+			uploadInput.addEventListener("change", function (event) {
+			  const file = event.target.files[0];
+			  if (file) {
+				console.log("File selected:", file);
+				const img = document.createElement("img");
+				img.src = URL.createObjectURL(file);
+				img.alt = "Uploaded Preview";
 
-		  const upload3D = document.getElementById("upload-3d-photo");
-		  const preview3D = document.getElementById("preview-3d-photo");
-		  upload3D.addEventListener("change", function (event) {
-			const file = event.target.files[0];
-			if (file) {
-			  console.log("3D File selected:", file);
-			  const img = document.createElement("img");
-			  img.src = URL.createObjectURL(file);
-			  img.alt = "3D Uploaded Preview";
-			  preview3D.innerHTML = "";
-			  preview3D.appendChild(img);
-			}
-		  });
+				// Hide upload label
+				uploadLabel.style.display = "none";
+
+				// Add image to preview and make it clickable
+				previewDiv.innerHTML = "";
+				previewDiv.appendChild(img);
+				
+				img.addEventListener("click", function () {
+				  uploadInput.click(); // Reopen file selection when image is clicked
+				});
+			  }
+			});
+		  }
+
+		  // Apply function to both 2D and 3D uploads
+		  handleImageUpload(
+			document.getElementById("upload-2d-photo"),
+			document.getElementById("preview-2d-photo"),
+			document.querySelector('label[for="upload-2d-photo"]')
+		  );
+
+		  handleImageUpload(
+			document.getElementById("upload-3d-photo"),
+			document.getElementById("preview-3d-photo"),
+			document.querySelector('label[for="upload-3d-photo"]')
+		  );
   
   
 	  document.getElementById("download-pdf").addEventListener("click", function() {
