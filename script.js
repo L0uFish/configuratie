@@ -2293,4 +2293,11 @@ highlightEmptyFields();
 			}
 		  });
   
+  
+	  document.getElementById("download-pdf").addEventListener("click", function() {
+		// Trigger print using the browser's native print function
+		window.print();
+	});
+
+  
 }); // end DOMContentLoaded
