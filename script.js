@@ -2080,7 +2080,8 @@ document.addEventListener("DOMContentLoaded", function () {
 					elem.checked = true;
 					console.log(`Checkbox '${opt.elementId}' checked (code ${opt.code} found)`);
 				} else {
-					elem.value = item.amount;  // Use the amount instead of the code
+					// Ensure it's setting the amount and not the code
+					elem.value = item.amount || "1";  // Default to "1" if amount is missing
 					console.log(`Text input '${opt.elementId}' set to amount ${item.amount}`);
 				}
 				usedItems.add(opt.code);
