@@ -1,0 +1,586 @@
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mobilae Form</title>
+        <link rel="stylesheet" href="styles.css">
+    </head> 
+    <body>
+        <div class="form-container">
+            <!-- Header Section -->
+            <div class="header-wrapper">
+                <div class="header-box">
+                    <div class="header-fields">
+                        <div class="input-group">
+                            <label class="client-name">Klantnaam:</label>
+                            <input type="text">
+                        </div>
+                        <div class="input-group">
+                            <label class="collectienaam">Collectie:</label>
+                            <input type="text">
+                        </div>
+                        <div class="input-group">
+                            <label>Klantnummer:</label>
+                            <input type="text">
+                        </div>
+                        <div class="input-group">
+                            <label>Adviseur:</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+                <button id="LoadData">
+					<div class="header-logo">
+						<img src="logo.png" alt="Mobilae Logo">
+					</div>				
+				</button>
+            </div>
+
+            <!-- Customer Measurements -->
+            <section class="details-grid">
+                <div class="details-section">
+                    <div class="section-header">Maten van de klant</div>
+                    <div class="form-row">
+                        <label>Lengte klant (mm):</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-row">
+                        <label>Gewicht klant (kg):</label>
+                        <input type="text">
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="rolstoel">
+                        <label for="rolstoel">Klant in rolstoel</label>
+                    </div>
+                </div>
+
+                <div class="details-section">
+                    <div class="section-header">Badkamer details</div>
+                    <div class="form-row">
+                        <label>Breedte badkamer deur:</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-row">
+                        <label>Hoogte badkamer:</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-row">
+                        <label>HOH:</label>
+                        <select>
+                            <option>Kiezen</option>
+                            <option>120</option>
+                            <option>150</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Configuration Details -->
+            <section class="config-details">
+                <div class="section-header">Configuratie details</div>
+                <div class="config-rows">
+                    <!-- Example Config Row with Label Input -->
+                    <div class="config-row">
+                        <div class="panel-options">
+                            <label>
+                                <input type="radio" name="panel" value="Wall1">
+                                <img src="Wall1.png" alt="Paneel 1">
+                            </label>
+                            <label>
+                                <input type="radio" name="panel" value="Wall2">
+                                <img src="Wall2.png" alt="Paneel 2">
+                            </label>
+                            <label>
+                                <input type="radio" name="panel" value="Wall3">
+                                <img src="Wall3.png" alt="Paneel 3">
+                            </label>
+                            <label>
+                                <input type="radio" name="panel" value="Wall4">
+                                <img src="Wall4.png" alt="Paneel 4">
+                            </label>
+                            <label>
+                                <input type="radio" name="panel" value="Wall5">
+                                <img src="Wall5.png" alt="Paneel 5">
+                            </label>
+                            <label>
+                                <input type="radio" name="panel" value="Wall6">
+                                <img src="Wall6.png" alt="Paneel 6">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="config-row">
+                        <label>Douchevloer
+                            <input id = "douchevloer-description" type="text" placeholder="Beschrijving">
+                        </label>
+                        <div class="input-row">
+                            <input id = "douchevloer-code" type="text" placeholder="Artikelcode">
+                            <input id = "douchevloer-maat" type="text" placeholder="Maat">
+                            <input id = "douchevloer-kleur" type="text" placeholder="Kleur">
+                        </div>
+                    </div>
+
+                    <div class="config-row">
+                        <label>Douchewand
+                            <input id = "douchewand-description" type="text" placeholder="Beschrijving">
+                        </label>
+                        <div class="input-row">
+                            <input id = "douchewand-code" type="text" placeholder="Artikelcode">
+                            <input id = "douchewand-aantal" type="text" placeholder="Aantal">
+                            <input id = "douchewand-kleur" type="text" placeholder="Kleur">
+                        </div>
+                    </div>
+
+                    <div class="config-row">
+                        <label>Glas lange zijde
+                            <input id = "glas-lange-description" type="text" placeholder="Beschrijving">
+                        </label>
+                        <div class="input-row">
+                            <input id = "glas-lange-code" type="text" placeholder="Artikelcode">
+                            <input id = "glas-lange-maat" type="text" placeholder="Maat">
+                            <input id = "glas-lange-kleur" type="text" placeholder="Profielkleur">
+                        </div>
+                    </div>
+
+                    <div class="config-row">
+                        <label>Glas korte zijde
+                            <input id = "glas-korte-description" type="text" placeholder="Beschrijving">
+                        </label>
+                        <div class="input-row">
+                            <input id = "glas-korte-code" type="text" placeholder="Artikelcode">
+                            <input id = "glas-korte-maat" type="text" placeholder="Maat">
+                            <input id = "glas-korte-kleur" type="text" placeholder="Profielkleur">
+                        </div>
+                    </div>
+
+                    <div class="config-row">
+                        <label>Glas draaipaneel
+                            <input id ="glas-draaipaneel-description" type="text" placeholder="Beschrijving">
+                        </label>
+                        <div class="input-row">
+                            <input id ="glas-draaipaneel-code" type="text" placeholder="Artikelcode">
+                            <input id ="glas-draaipaneel-maat" type="text" placeholder="Maat">
+                        </div>
+                    </div>
+
+                    <div class="config-row">
+                        <label>Douchestoel
+                        </label>
+                        <div class="input-row">
+                            <input id = "douchestoel-code" type="text" placeholder="Artikelcode">
+                            <input id = "douchestoel-type" type="text" placeholder="Type">
+                            <input id = "douchestoel-kleur" type="text" placeholder="Kleur">
+                        </div>
+                    </div>
+
+                    <div class="config-row">
+                        <label>Doucheset
+                        </label>
+                        <div class="input-row">
+                            <input id = "doucheset-code" type="text" placeholder="Artikelcode">
+                            <input id = "doucheset-type" type="text" placeholder="Type">
+                            <input id = "doucheset-kleur" type="text" placeholder="Kleur">
+                        </div>
+                    </div>
+                    
+                    <div class="config-row">
+                        <label>Handgreep
+                        </label>
+                        <div class="input-row">
+                            <input id = "handgreep-code" type="text" placeholder="Artikelcode">
+                            <input id = "handgreep-aantal" type="text" placeholder="Aantal">
+                            <input id = "handgreep-maat" type="text" placeholder="Maat">
+                            <input id = "handgreep-kleur" type="text" placeholder="Kleur">
+                        </div>
+                        <div class="input-row">
+                            <input id = "handgreep2-code" type="text" placeholder="Artikelcode">
+                            <input id = "handgreep2-aantal" type="text" placeholder="Aantal">
+                            <input id = "handgreep2-maat" type="text" placeholder="Maat">
+                            <input id = "handgreep2-kleur" type="text" placeholder="Kleur">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extra Products Section Title -->
+            <section class="extra-products">
+                <div class="section-header">Extra Producten</div>
+                <div class="extra-products-grid">
+                    <div class="product-column">
+                        <div class="product-row">
+                            <input type="text" placeholder="Artikelcode" name="article">
+                            <input type="text" placeholder="Beschrijving" name="description">
+                            <input type="text" placeholder="Aantal" name="quantity">
+                        </div>
+                    </div>
+                    <div class="product-column">
+                        <div class="product-row">
+                            <input type="text" placeholder="Artikelcode" name="article">
+                            <input type="text" placeholder="Beschrijving" name="description">
+                            <input type="text" placeholder="Aantal" name="quantity">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Signature Section -->
+            <section class="signature-section">
+                <div class="signature-row">
+                <div class="signature-block">
+                    <div class="signature-line"></div>
+                    <label>Handtekening adviseur</label>
+                </div>
+                <div class="signature-date">
+                    <div class="date-box"></div>
+                    <label>Datum</label>
+                </div>
+                <div class="signature-block">
+                    <div class="signature-line"></div>
+                    <label>Handtekening klant</label>
+                </div>
+                <div class="signature-date">
+                    <div class="date-box"></div>
+                    <label>Datum</label>
+                </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="form-container">
+            <!-- Header Section -->
+            <div class="header-wrapper">
+                <div class="header-box">
+                    <div class="header-fields">
+                        <div class="input-group">
+                            <label class="client-name">Klantnaam:</label>
+                            <input type="text">
+                        </div>
+                        <div class="input-group">
+                            <label class="collectienaam">Collectie:</label>
+                            <input type="text">
+                        </div>
+                        <div class="input-group">
+                            <label>Klantnummer:</label>
+                            <input type="text">
+                        </div>
+                        <div class="input-group">
+                            <label>Adviseur:</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="header-logo">
+                    <img src="logo.png" alt="Mobilae Logo">
+                </div>
+            </div>
+
+            <!-- Installation Details Section -->
+            <section class="installation-details">
+                <div class="section-header">Installatie details</div>
+                <div class="installation-grid">
+                    <!-- Left Column -->
+                    <div class="details-column">
+                        <div class="form-row">
+                            <label for="type">Type:</label>
+                            <select id="type">
+                                <option>Kiezen</option>
+                                <option>A 890.0225.01BE</option>
+                                <option>B 890.0225.10BE</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label for="extra-uren">Extra uren:</label>
+                            <input type="text" id="extra-uren" maxlength="2" class="input-small">
+                            <span class="article-code">890.0220.25SH</span>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="meubel">
+                            <label for="meubel">Installatie meubel</label>
+                            <span class="article-code">890.0220.30NB</span>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toilet">
+                            <label for="toilet">Toilet (bad/douche)</label>
+                            <span class="article-code">890.0440.00DT</span>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="douchetoilet">
+                            <label for="douchetoilet">Douchetoilet</label>
+                            <span class="article-code">890.0222.05NB</span>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="prefab">
+                            <label for="prefab">Prefab muur</label>
+                            <span class="article-code">320.5030.08NB</span>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="radiator">
+                            <label for="radiator">Verwijderen/installeren radiator</label>
+                            <span class="article-code">890.0222.04NB</span>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="ladderlift">
+                            <label for="ladderlift">Ladderlift via Mobilae</label>
+                            <span class="article-code">890.0225.20NB</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="details-column">
+                        <div class="checkbox-group">
+                            <label for="garantie">Garantie:</label>
+                            <select id="garantie">
+                                <option>Kiezen</option>
+                                <option>2 jaar 890.0111.24SA</option>
+                                <option>5 jaar 890.0113.00SA</option>
+                            </select>
+                        </div>
+                        <div class="checkbox-group">
+                            <label for="afvoer">Afvoer bouwafval:</label>
+                            <select id="afvoer">
+                                <option>Kiezen</option>
+                                <option>Mobilae 890.0220.00NB</option>
+                                <option>Klant 890.0220.01NB</option>
+                            </select>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="core-assortiment">
+                            <label for="core-assortiment">Core assortiment</label>
+                            <span class="article-code">890.1070.23DI</span>
+                        </div>
+                        <div class="form-row">
+                            <label for="opmerkingen">Aanvullende opmerkingen:</label>
+                            <textarea id="opmerkingen" rows="3"></textarea>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="stoel-notes">
+                            <label for="stoel-notes">Als het technisch niet mogelijk is om een aan de muur gemonteerde stoel te installeren, zullen we deze vervangen door een vrijstaande stoel van gelijke waarde.</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+            <!-- Technical Section -->
+            <section class="Technical">
+                <div class="section-header">Technische specificaties</div>
+                <div class="technical-grid">
+                    <!-- Row 1 -->
+                    <div class="form-row">
+                        <label for="vloerverwarming">1. Vloerverwarming:</label>
+                        <select id="vloerverwarming">
+                            <option>Kiezen</option>
+                            <option>Niet van Toepassing</option>
+                            <option>Elektrisch</option>
+                            <option>Water</option>
+                        </select>
+                    </div>
+
+                <!-- Row 2 -->
+                    <div class="form-row">
+                        <label for="verdieping">2. Verdieping:</label>
+                        <select id="verdieping">
+                            <option>Kiezen</option>
+                            <option>Kelder</option>
+                            <option>Begane grond</option>
+                            <option>1e verdieping</option>
+                            <option>2e verdieping</option>
+                            <option>&gt2 veriepingen</option>
+                        </select>
+                        <label for="trap" class="inline-label">
+                            <input type="checkbox" id="trap">
+                            Trap
+                        </label>
+                        <label for="lift" class="inline-label">
+                            <input type="checkbox" id="lift">
+                            Lift
+                        </label>
+                        <label>H:</label>
+                        <input type="text" class="input-small">
+                        <label>B:</label>
+                        <input type="text" class="input-small">
+                        <label>D:</label>
+                        <input type="text" class="input-small">
+                        <label for="materiaal-transport" class="inline-label">
+                            <input type="checkbox" id="materiaal-transport">
+                            Mag gebruikt voor materiaal transport
+                        </label>
+                    </div>
+
+                <!-- Row 3 -->
+                    <div class="form-row">
+                        <label>3. Verwijderen:</label>
+                        <label for="verwijderen-bad" class="inline-label">
+                            <input type="checkbox" id="verwijderen-bad">
+                            Bad
+                        </label>
+                        <label for="verwijderen-douche" class="inline-label">
+                            <input type="checkbox" id="verwijderen-douche">
+                            Douche
+                        </label>
+                        <label for="verwijderen-toilet" class="inline-label">
+                            <input type="checkbox" id="verwijderen-toilet">
+                            Toilet
+                        </label>
+                        <label for="verwijderen-meubel" class="inline-label">
+                            <input type="checkbox" id="verwijderen-meubel">
+                            Meubel
+                        </label>
+                        <label for="verwijderen-radiator" class="inline-label">
+                            <input type="checkbox" id="verwijderen-radiator">
+                            Radiator
+                        </label>
+                        <label for="verwijderen-wastafel" class="inline-label">
+                            <input type="checkbox" id="verwijderen-wastafel">
+                            Wastafel/Bidet
+                        </label>
+                    </div>
+
+                <!-- Row 4 -->
+                    <div class="form-row">
+                        <label for="hoofdwaterkraan">4. Hoofdwaterkraan getest?</label>
+                        <select id="hoofdwaterkraan">
+                            <option>Kiezen</option>
+                            <option>Ja, functioneert</option>
+                            <option>Functioneert niet, klant is verantwoordelijk</option>
+                            <option>Niet bereikbaar, klant is verantwoordelijk</option>
+                        </select>
+                        <label for="locatie">Locatie:</label>
+                        <input type="text" id="locatie">
+                    </div>
+
+                <!-- Row 5 -->
+                    <div class="form-row">
+                        <label for="parkeren">5. Parkeren:</label>
+                        <select id="parkeren">
+                            <option>Kiezen</option>
+                            <option>Mogelijk binnen 50m</option>
+                            <option>Klant regelt, verantwoordelijk</option>
+                        </select>
+                    </div>
+
+                <!-- Row 6 -->
+                    <div class="form-row">
+                        <label for="installatie-zondag">6. Installatie op zondag:</label>
+                        <select id="installatie-zondag">
+                            <option>Kiezen</option>
+                            <option>Mogelijk</option>
+                            <option>Niet mogelijk</option>
+                        </select>
+                    </div>
+                </div>
+
+            <!-- Disclaimer -->
+                <div class="disclaimer">
+                    <p><strong>Disclaimer:</strong></p>
+                    <p>Water wordt afgesloten tijdens de installatie.</p>
+                    <p>Douchevloerhoogte is afhankelijk van de situatie onder huidig bad en wordt daarop aangepast.</p>
+                </div>
+            </section>
+
+
+
+            <!-- Signature Section -->
+            <section class="signature-section">
+                <div class="signature-row">
+                <div class="signature-block">
+                    <div class="signature-line"></div>
+                    <label>Handtekening adviseur</label>
+                </div>
+                <div class="signature-date">
+                    <div class="date-box"></div>
+                    <label>Datum</label>
+                </div>
+                <div class="signature-block">
+                    <div class="signature-line"></div>
+                    <label>Handtekening klant</label>
+                </div>
+                <div class="signature-date">
+                    <div class="date-box"></div>
+                    <label>Datum</label>
+                </div>
+                </div>
+            </section>
+            
+        </div>
+
+        <div class="form-container">
+            <!-- Header Section -->
+            <div class="header-wrapper">
+                <div class="header-box">
+                    <div class="header-fields">
+                        <div class="input-group">
+                            <label class="client-name">Klantnaam:</label>
+                            <input type="text">
+                        </div>
+                        <div class="input-group">
+                            <label class="collectienaam">Collectie:</label>
+                            <input type="text">
+                        </div>
+                        <div class="input-group">
+                            <label>Klantnummer:</label>
+                            <input type="text">
+                        </div>
+                        <div class="input-group">
+                            <label>Adviseur:</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="header-logo">
+                    <img src="logo.png" alt="Mobilae Logo">
+                </div>
+            </div>
+
+            <!-- 2D Details -->
+            <section class="2D">
+                <div class="section-header">Nieuwe situatie - 2D</div>
+                <div class="upload-section">
+                    <label for="upload-2d-photo" class="upload-label">Upload Foto</label>
+                    <input type="file" id="upload-2d-photo" class="upload-input" accept="image/*">
+                    <div id="preview-2d-photo" class="photo-preview"></div>
+                </div>
+            </section>
+
+            <!-- 3D Section Title -->
+            <section class="3D">
+                <div class="section-header">Nieuwe situatie - 3D</div>
+                <div class="upload-section">
+                    <label for="upload-3d-photo" class="upload-label">Upload Foto</label>
+                    <input type="file" id="upload-3d-photo" class="upload-input" accept="image/*">
+                    <div id="preview-3d-photo" class="photo-preview"></div>
+                </div>
+            </section>
+
+            <!-- Signature Section -->
+            <section class="signature-section">
+                <div class="signature-row">
+                <div class="signature-block">
+                    <div class="signature-line"></div>
+                    <label>Handtekening adviseur</label>
+                </div>
+                <div class="signature-date">
+                    <div class="date-box"></div>
+                    <label>Datum</label>
+                </div>
+                <div class="signature-block">
+                    <div class="signature-line"></div>
+                    <label>Handtekening klant</label>
+                </div>
+                <div class="signature-date">
+                    <div class="date-box"></div>
+                    <label>Datum</label>
+                </div>
+                </div>
+            </section>
+
+        </div>
+
+<script src="script.js"></script>
+
+    </body>
+    </html>

@@ -1,0 +1,654 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Ensure Full-Page Height */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    color: #133e46;
+}
+
+/* Main Form Container */
+.form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    flex: 1; /* Fills the available vertical space */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Wrapper */
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Header Box */
+.header-box {
+    background-color: #49a79b;
+    padding: 15px;
+    border-radius: 5px;
+    flex: 1;
+}
+
+.header-fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group label {
+    font-weight: bold;
+    color: #fff;
+    min-width: 120px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    color: #133e46;
+    background-color: #ffffff;
+}
+
+/* Logo Styling */
+.header-logo img {
+    height: 75px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Section Header */
+.section-header {
+    background-color: #49a79b;
+    color: #ffffff;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Details Grid */
+.details-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.details-section {
+    flex: 1;
+}
+
+.details-section .form-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.details-section label {
+    font-weight: bold;
+    min-width: 180px;
+}
+
+.details-section input,
+.details-section select {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #133e46;
+    background-color: #ffffff;
+}
+
+/* Checkbox Alignment */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Configuration Rows */
+.config-rows {
+    margin-top: 0px;
+}
+
+.config-row {
+    margin-bottom: 10px;
+}
+
+/* Label Section with Textbox */
+.config-row label {
+    font-weight: bold;
+    color: #133e46;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.config-row label input[placeholder="Beschrijving"] {
+    min-width: 140px;
+    max-width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #133e46;
+    background-color: #ffffff;
+    resize: none;
+    width: auto;
+    overflow-x: hidden;
+}
+
+/* Input Row */
+.input-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.input-row input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #133e46;
+    background-color: #ffffff;
+}
+
+/* Specific Widths for Alignment */
+.input-row input[placeholder="Artikelcode"] {
+    flex: 0 0 140px;
+}
+
+.input-row input[placeholder="Maat"],
+.input-row input[placeholder="Aantal"],
+.input-row input[placeholder="Type"],
+.input-row input[placeholder="Kleur"],
+.input-row input[placeholder="Profielkleur"] {
+    flex: 0 0 140px;
+}
+
+.extra-products-grid {
+    display: flex;
+    justify-content: center; /* Ensures equal spacing on both sides */
+    gap: 30px; /* Space between the columns */
+    position: relative;
+    padding: 0 15px; /* Add padding to create space on both sides */
+    max-width: 100%; /* Ensure it doesn't stretch beyond container */
+}
+
+.product-column {
+    flex: 1;
+    min-width: 300px; /* Adjust if needed */
+    position: relative;
+}
+
+/* Add a vertical divider */
+.product-column:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -15px; /* Moves the divider closer to the center */
+    bottom: 0;
+    width: 2px;
+    background-color: #ccc;
+}
+
+/* Product Row */
+.product-row {
+    display: flex;
+    gap: 8px;
+}
+
+.product-row input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #133e46;
+    background-color: #ffffff;
+}
+
+/* Specific Widths for Fields */
+.product-row input[placeholder="Artikelcode"] {
+    flex: 0 0 80px;
+    max-width: 120px;
+}
+
+.product-row input[placeholder="Beschrijving"] {
+    flex: 1;
+}
+
+.product-row input[placeholder="Aantal"] {
+    flex: 0 0 30px;
+    max-width: 30px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.product-row:not(.hidden) {
+    display: flex;
+    opacity: 1;
+}
+
+/* Signature Section */
+.signature-section {
+    padding-top: 100px;
+    position: relative; /* Ensure proper stacking context */
+    margin-top: auto; /* Push the signature section down if there’s extra space */
+    page-break-after: always; /* Ensure a page break after the section */
+}
+
+.signature-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto; /* Fixed height to ensure proper spacing */
+}
+
+.signature-line {
+    border-bottom: 2px solid #49a79b;
+    height: 2px;
+    width: 180px;
+    margin: auto;
+}
+
+.signature-block,
+.signature-date {
+    flex: 1;
+    text-align: center;
+}
+
+}
+
+.signature-block label,
+.signature-date label {
+    margin-top: 5px;
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    color: #133e46;
+}
+
+/* Installation Grid */
+.installation-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 150px; /* Increased gap for better spacing */
+    margin-bottom: 20px;
+}
+
+/* Columns inside the Installation Grid */
+.installation-grid .details-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Form Rows for Inputs and Selects */
+.installation-grid .form-row,
+.installation-grid .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Checkbox Group for Garantie and Afvoer */
+.installation-grid .checkbox-group label {
+    flex: 1;
+    text-align: left;
+}
+
+.installation-grid .checkbox-group select {
+    flex: 1;
+}
+
+/* Input Styling for Small Inputs */
+.installation-grid .input-small {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Article Codes Styling */
+.installation-grid .checkbox-group .article-code {
+    color: #555;
+    margin-left: auto;
+}
+
+/* Textarea for Additional Comments */
+.installation-grid textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #133e46;
+    background-color: #ffffff;
+}
+
+/* Section Header for Consistency */
+.installation-details .section-header {
+    background-color: #49a79b;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.installation-grid .article-code {
+    color: #555;
+    margin-left: auto;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Styling for Dropdowns (Select Elements) */
+.installation-grid select {
+    width: 100%; /* Matches the input and textarea sizes */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #133e46;
+    background-color: #ffffff;
+    box-sizing: border-box; /* Ensures proper sizing */
+}
+
+/* Form Row Alignment for Dropdowns */
+.installation-grid .form-row select {
+    flex: 1; /* Ensures dropdown fills the available space */
+    margin-right: 0; /* Consistent spacing with other form elements */
+}
+
+/* Technical Grid */
+.technical-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Form Row Styling */
+.technical-grid .form-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Inline Labels and Inputs */
+.inline-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Small Input Fields */
+.input-small {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Dropdown Styling */
+.technical-grid select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #133e46;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+/* Disclaimer Styling */
+.disclaimer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Ensure all checkboxes have a fixed size and prevent stretching */
+input[type="checkbox"] {
+    appearance: none; /* Remove default styles */
+    width: 20px; /* Set fixed size */
+    height: 20px; /* Set fixed size */
+    border: 1px solid #ccc; /* Add consistent border */
+    border-radius: 3px; /* Optional: match other inputs */
+    background-color: #ffffff; /* Ensure white background */
+    display: inline-block; /* Prevent stretching */
+    margin: 0; /* Remove extra margin */
+    vertical-align: middle; /* Align with label text */
+    position: relative;
+    cursor: pointer;
+}
+
+/* Handle "Klant in rolstoel" checkbox and similar inline checkboxes */
+.checkbox-group input[type="checkbox"] {
+    width: 20px; /* Fixed size */
+    height: 20px; /* Fixed size */
+    margin: 0; /* Remove any extra margin */
+    flex-shrink: 0; /* Prevent shrinking or stretching in flex layouts */
+    display: inline-block; /* Ensure it stays inline */
+}
+
+/* Fix alignment of checkbox labels */
+.checkbox-group label {
+    flex: 0; /* Prevent label from stretching */
+    margin-left: 5px; /* Space between checkbox and label */
+}
+
+/* For checked state */
+input[type="checkbox"]:checked::before {
+    content: '✓'; /* Black checkmark */
+    font-size: 14px; /* Adjust size */
+    color: #133e46; /* Black color */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Optional: Style for parent container */
+.checkbox-group {
+    display: inline-flex; /* Use inline-flex to avoid stretching */
+    align-items: center; /* Align items properly */
+    gap: 10px; /* Adjust spacing between checkbox and label */
+}
+
+.panel-options {
+    display: flex;
+    justify-content: center; /* Centers the items horizontally */
+    gap: 30px;
+    flex-wrap: wrap; /* Ensures proper alignment if space is limited */
+}
+
+.panel-options label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.panel-options input[type="radio"] {
+    display: none; /* Hide the actual radio button */
+}
+
+.panel-options img {
+    width: 60px; /* Adjust width to match your design */
+    height: auto;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.panel-options input[type="radio"]:checked + img {
+    border-color: #49a79b; /* Highlight selected image */
+}
+
+.upload-section {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-label {
+    background-color: #49a79b;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+.upload-input {
+    display: none;
+}
+
+.photo-preview {
+    width: 100%; /* Match the width of the parent container */
+    display: flex;
+    justify-content: center; /* Center the images horizontally */
+    align-items: center; /* Center vertically if needed */
+    margin-top: 10px;
+    overflow: hidden;
+    flex-wrap: wrap; /* Allow images to wrap if multiple */
+    gap: 10px;
+}
+
+.photo-preview img {
+    max-height: 35vh;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+.uploaded-photo {
+    width: 100%; /* Stretch to fill the container's width */
+    max-height: 25vh; /* Limit height to 1/3rd of the viewport height */
+    object-fit: contain; /* Maintain aspect ratio */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer; /* Indicate that the image is interactive */
+    transition: transform 0.2s ease;
+}
+
+.uploaded-photo:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+#LoadData {
+	border-style: hidden
+}
+
+@page {
+    size: A4 portrait;
+}
+
+/* Print-specific styles */
+@media print {
+    /* Ensure each form container starts on a new page */
+    .form-container {
+        page-break-after: always;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Ensure signature section is pushed to the bottom */
+        height: 100vh; /* Full height of the printed page */
+        box-sizing: border-box; /* Include padding/border in height calculation */
+    }
+
+    /* Adjust font sizes and spacing for print readability */
+    body {
+        margin: 0;
+        font-size: 11pt;
+    }
+
+    .section-header {
+        margin-bottom: 10px;
+    }
+
+    .header-wrapper {
+        margin-bottom: 10px;
+    }
+
+    .config-row {
+        margin-bottom: 5px;
+    }
+
+    .header-fields label,
+    input,
+    select,
+    textarea {
+        font-size: 10pt;
+    }
+
+    /* Signature section alignment */
+    .signature-section {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    /* Hide scrollbars when printing */
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Red border for error highlighting */
+.error-highlight {
+  border: 2px solid #7fa4a1 !important;
+}
+
+/* Remove error highlighting when printing */
+@media print {
+  .error-highlight {
+    border: none !important;
+  }
+}
+
+
