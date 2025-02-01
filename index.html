@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mobilae Form</title>
         <link rel="stylesheet" href="styles.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     </head> 
     <body>
         <div class="form-container">	<!-- PAGE 1 -->
@@ -40,32 +42,41 @@
             <!-- Customer Measurements -->
             <section class="details-grid">
                 <div class="details-section">
-                    <div class="section-header">Maten van de klant</div>
-                    <div class="form-row">
-                        <label>Lengte klant (mm):</label>
-                        <input type="text">
-                    </div>
-                    <div class="form-row">
-                        <label>Gewicht klant (kg):</label>
-                        <input type="text">
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="rolstoel">
-                        <label for="rolstoel">Klant in rolstoel</label>
-                    </div>
-                </div>
+					<div class="section-header">Maten van de klant</div>
+					<div class="double-row">
+						<div class="form-row">
+							<label>Lengte:</label>
+							<input type="text">
+						</div>
+						<div class="form-row">
+							<label>Gewicht:</label>
+							<input type="text">
+						</div>
+					</div>
+					<div class="form-row form-row-rolstoel">
+						<label>Rolstoelgebruiker:</label>
+						<select>
+							<option>Kiezen</option>
+							<option>Ja</option>
+							<option>Nee</option>
+						</select>
+					</div>
+				</div>
+
 
                 <div class="details-section">
                     <div class="section-header">Badkamer details</div>
-                    <div class="form-row">
-                        <label>Breedte badkamer deur:</label>
-                        <input type="text">
-                    </div>
-                    <div class="form-row">
-                        <label>Hoogte badkamer:</label>
-                        <input type="text">
-                    </div>
-                    <div class="form-row">
+					<div class="double-row">
+						<div class="form-row">
+							<label>Breedte deur:</label>
+							<input type="text">
+						</div>
+						<div class="form-row">
+							<label>Hoogte:</label>
+							<input type="text">
+						</div>
+					</div>
+                    <div class="form-row form-row-hoh">
                         <label>HOH:</label>
                         <select>
                             <option>Kiezen</option>
@@ -531,9 +542,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="header-logo">
-                    <img src="logo.png" alt="Mobilae Logo">
-                </div>
+					<button class="hide-on-pdf" id="download-pdf">
+					<div class="header-logo">
+						<img src="logo.png" alt="Mobilae Logo">
+					</div>
+					</button>
             </div>
 
             <!-- 2D Details -->
