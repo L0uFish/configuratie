@@ -140,17 +140,24 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 		
 		// === Fill Remarks ===
-		if (response && response.remarks) {
-          const remarksField = document.getElementById("opmerkingen");
-          if (remarksField) {
-            remarksField.value = response.remarks;
-            console.log("Remarks filled:", response.remarks);
-          } else {
-            console.log("Remarks field #opmerkingen not found.");
-          }
-        } else {
-          console.log("No remarks found in response.");
-        }
+		if (response && response.remarks !== undefined) {
+			console.log("Remarks received:", response.remarks);
+			
+			const remarksField = document.getElementById("opmerkingen");
+			
+			if (remarksField) {
+				if (response.remarks.trim() !== "") {
+					remarksField.value = response.remarks;
+					console.log("Remarks filled:", response.remarks);
+				} else {
+					console.log("Remarks field found, but response.remarks is empty.");
+				}
+			} else {
+				console.log("ERROR: Remarks field #opmerkingen not found in the DOM.");
+			}
+		} else {
+			console.log("ERROR: No remarks field in the response object.");
+		}
 
 
 
