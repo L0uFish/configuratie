@@ -2072,21 +2072,22 @@ document.addEventListener("DOMContentLoaded", function () {
 		  ];
 		  
 		  extraOptions.forEach(opt => {
-			const elem = document.getElementById(opt.elementId);
-			const item = response.data.find(entry => entry.code === opt.code);
-			
-			if (item && elem) {
-				if (opt.isCheckbox) {
-					elem.checked = true;
-					console.log(`Checkbox '${opt.elementId}' checked (code ${opt.code} found)`);
-				} else {
-					// Ensure it's setting the amount and not the code
-					elem.value = item.amount || "1";  // Default to "1" if amount is missing
-					console.log(`Text input '${opt.elementId}' set to amount ${item.amount}`);
-				}
-				usedItems.add(opt.code);
-			}
+		    const elem = document.getElementById(opt.elementId);
+		    const item = response.data.find(entry => entry.code === opt.code);
+		    
+		    if (item && elem) {
+		        if (opt.isCheckbox) {
+		            elem.checked = true;
+		            console.log(`Checkbox '${opt.elementId}' checked (code ${opt.code} found)`);
+		        } else {
+		            // Ensure it's setting the amount and not the code
+		            elem.value = item.amount || "1";  // Default to "1" if amount is missing
+		            console.log(`Text input '${opt.elementId}' set to amount ${item.amount}`);
+		        }
+		        usedItems.add(opt.code);
+		    }
 		});
+
 		}
 
 
