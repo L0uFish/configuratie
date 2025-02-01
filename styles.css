@@ -195,8 +195,9 @@ html, body {
 
 .extra-products-grid {
     display: flex;
+	flex-wrap: wrap;
     justify-content: center; /* Ensures equal spacing on both sides */
-    gap: 30px; /* Space between the columns */
+    gap: 5px 30px; /* Space between the columns */
     position: relative;
     padding: 0 15px; /* Add padding to create space on both sides */
     max-width: 100%; /* Ensure it doesn't stretch beyond container */
