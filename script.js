@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadDataButton = document.getElementById("LoadData");
 
   loadDataButton.addEventListener("click", function () {
-	  // Get today's date and format it as dd-mm-yyyy
+	  //  Get today's date and format it as dd-mm-yyyy
 	  const today = new Date();
 	  const dd = String(today.getDate()).padStart(2, '0');
 	  const mm = String(today.getMonth() + 1).padStart(2, '0'); // getMonth() is zero-based
@@ -138,6 +138,19 @@ document.addEventListener("DOMContentLoaded", function () {
 		  });
 		  console.log("Collection name set:", actualCollectionName);
 		}
+		
+		// === Fill Remarks ===
+		if (response && response.remarks) {
+          const remarksField = document.getElementById("opmerkingen");
+          if (remarksField) {
+            remarksField.value = response.remarks;
+            console.log("Remarks filled:", response.remarks);
+          } else {
+            console.log("Remarks field #opmerkingen not found.");
+          }
+        } else {
+          console.log("No remarks found in response.");
+        }
 
 
 
