@@ -2202,9 +2202,45 @@ highlightEmptyFields();
     ); // end runtime.sendMessage
   }); // end loadDataButton click
   
-  // -----------------------------------
-  // 	photo upload
-  // -----------------------------------
+		// ------------------------------
+		// Sync "client-number" inputs
+		// ------------------------------
+		const clientNumberInputs = document.querySelectorAll(".client-number + input");
+
+		function syncClientNumberInput(event) {
+			const value = event.target.value;
+			clientNumberInputs.forEach(input => {
+				if (input !== event.target) {
+					input.value = value;
+				}
+			});
+		}
+
+		clientNumberInputs.forEach(input => {
+			input.addEventListener("input", syncClientNumberInput);
+		});
+
+		// ------------------------------
+		// Sync "advisor" inputs
+		// ------------------------------
+		const advisorInputs = document.querySelectorAll(".advisor + input");
+
+		function syncAdvisorInput(event) {
+			const value = event.target.value;
+			advisorInputs.forEach(input => {
+				if (input !== event.target) {
+					input.value = value;
+				}
+			});
+		}
+
+		advisorInputs.forEach(input => {
+			input.addEventListener("input", syncAdvisorInput);
+		});
+  
+	// -----------------------------------
+	// 	photo upload
+	// -----------------------------------
   
 		  const upload2D = document.getElementById("upload-2d-photo");
 		  const preview2D = document.getElementById("preview-2d-photo");
