@@ -269,10 +269,10 @@ html, body {
 }
 
 /* Add a vertical divider */
-.product-column:not(:last-child)::after {
+.product-column:nth-child(odd)::after {
     content: "";
     position: absolute;
-    top: 0;
+    top: -5px;
     right: -15px; /* Moves the divider closer to the center */
     bottom: 0;
     width: 2px;
@@ -711,4 +711,11 @@ input[type="checkbox"]:checked::before {
   
 }
 
-
+#locatie {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+	min-width:80px;
+    color: #133e46;
+    background-color: #ffffff;
+}
