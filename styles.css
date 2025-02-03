@@ -646,6 +646,8 @@ input[type="checkbox"]:checked::before {
 
 /* Print-specific styles */
 @media print {
+    /* Ensure each form container starts on a new page */
+    .form-container {
       display: flex;
       flex-direction: column;
       min-height: 100vh;  /* at least one full page */
