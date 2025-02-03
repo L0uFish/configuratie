@@ -646,52 +646,38 @@ input[type="checkbox"]:checked::before {
 
 /* Print-specific styles */
 @media print {
-    /* Ensure each form container starts on a new page */
-    .form-container {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;  /* at least one full page */
-      /* Remove any fixed height if present */
-      height: auto;
+  /* Instead of using flex for the container, use block layout */
+  .form-container {
+      display: block;      /* Remove flex */
+      width: 900px;        /* Fix the width to your intended max */
+      margin: 0 auto;      /* Center it */
+      min-height: auto;     /* Remove min-height 100vh */
+      padding: 20px;       /* Maintain your padding */
   }
-
-    /* Adjust font sizes and spacing for print readability */
-    body {
-        margin: 0;
-        font-size: 11pt;
-    }
-
-    .section-header {
-        margin-bottom: 10px;
-    }
-
-    .header-wrapper {
-        margin-bottom: 10px;
-    }
-
-    .config-row {
-        margin-bottom: 5px;
-    }
-
-    .header-fields label,
-    input,
-    select,
-    textarea {
-        font-size: 10pt;
-    }
-
-    /* Signature section alignment */
-    .signature-section {
-      position: static;    /* or simply remove any positioning */
-      margin-top: auto;    /* pushes it to the bottom of its flex container */
-      /* Optionally, you can add page-break rules if needed */
+  
+  /* Also adjust any flex-specific spacing that might be causing wrapping */
+  .header-fields, 
+  .input-row, 
+  .form-row {
+      gap: 5px;           /* Reduce gap if needed */
+      margin-bottom: 5px;  /* Adjust margin to keep things tight */
+  }
+  
+  /* For the signature section, keep it at the bottom */
+  .signature-section {
+      position: static;   /* Remove any positioning */
+      margin-top: 20px;    /* Some margin to separate from content above */
       page-break-inside: avoid;
   }
-
-    /* Hide scrollbars when printing */
-    ::-webkit-scrollbar {
-        display: none;
-    }
+  
+  /* Ensure a consistent box-sizing model */
+  *, *::before, *::after {
+      box-sizing: border-box;
+  }
+  
+  body {
+      font-size: 11pt;  /* Use pt units for print consistency */
+  }
 }
 
 #download-pdf {
