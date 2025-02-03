@@ -103,10 +103,21 @@ document.addEventListener("DOMContentLoaded", function () {
 	  signatureDateLabels.forEach(label => {
 		label.textContent = formattedDate;
 	  });
-    chrome.runtime.sendMessage(
-      "fjgodpiekafafncggbbagckcmgjnnbmk",
-      { type: "getExtractedData" },
-      function (response) {
+    
+	const urlParams = new URLSearchParams(window.location.search);
+
+// Parse JSON-encoded data safely
+const rawData = urlParams.get("data");
+let response = {
+    clientName: urlParams.get("client") || "Unknown",
+    collectionName: urlParams.get("collection") || "Unknown Collection",
+    remarks: urlParams.get("remarks") || "",
+    data: rawData ? JSON.parse(decodeURIComponent(rawData)) : []
+};
+
+console.log("Extracted from URL:", response);
+
+	
         console.log("Data received:", response);
 
         // Doucheset references
@@ -128,8 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 
 		// === Fill Collection Name ===
-		if (response && response.clientName && response.clientName.collectionName) {
-		  let actualCollectionName = response.clientName.collectionName;
+		if (response && response.collectionName) {
+			let actualCollectionName = response.collectionName || "Unknown Collection";
 		  
 		  // Select all inputs that immediately follow a label with class "collectienaam"
 		  const collectionInputs = document.querySelectorAll("label.collectienaam + input");
