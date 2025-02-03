@@ -103,15 +103,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	  signatureDateLabels.forEach(label => {
 		label.textContent = formattedDate;
 	  });
-    const urlParams = new URLSearchParams(window.location.search);
-	const response = {
-      clientName: urlParams.get("client"),
-	  collection: urlParams.get("collection"), 
-	  remarks: urlParams.get("remarks"),
-	  data: JSON.parse(urlParams.get("data") || "[]")
-	};
-	
-	console.log("Data received:", response);
+    chrome.runtime.sendMessage(
+      "fjgodpiekafafncggbbagckcmgjnnbmk",
+      { type: "getExtractedData" },
+      function (response) {
+        console.log("Data received:", response);
 
         // Doucheset references
         const dsCode  = document.getElementById("doucheset-code");
@@ -132,8 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 
 		// === Fill Collection Name ===
-		if (response && response.collection) {
-		  let actualCollectionName = response.collection;
+		if (response && response.clientName && response.clientName.collectionName) {
+		  let actualCollectionName = response.clientName.collectionName;
 		  
 		  // Select all inputs that immediately follow a label with class "collectienaam"
 		  const collectionInputs = document.querySelectorAll("label.collectienaam + input");
@@ -2225,6 +2221,8 @@ highlightEmptyFields();
 			}
 		  }
 		}
+	  } // end callback
+    ); // end runtime.sendMessage
   }); // end loadDataButton click
   
 		// ------------------------------
