@@ -1,21 +1,3 @@
-const script = document.createElement("script");
-script.textContent = `
-  chrome.storage.local.get(null, (result) => {
-      console.log("Injected Script: Extracted Data from Extension Storage", result);
-      window.postMessage({ type: "EXTENSION_DATA", data: result }, "*");
-  });
-`;
-document.documentElement.appendChild(script);
-
-
-window.addEventListener("message", (event) => {
-    if (event.data.type === "EXTENSION_DATA") {
-        console.log("Received data from extension storage:", event.data.data);
-        handleExtractedData(event.data.data);
-    }
-});
-
-
 document.addEventListener("DOMContentLoaded", function () {
   // --------------------------------------------------
   // 1) Setup for dynamic “Extra Product” row expansion
@@ -40,6 +22,25 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   }
+
+// Function to get data from URL parameters
+function getURLParams() {
+    const params = new URLSearchParams(window.location.search);
+    const clientName = params.get("client") || "";
+    const collectionName = params.get("collection") || "";
+    const rawData = params.get("data") || "[]"; // Default to an empty array if missing
+
+    let extractedData;
+    try {
+        extractedData = JSON.parse(decodeURIComponent(rawData)); // Decode & Parse JSON data
+    } catch (error) {
+        console.error("Error parsing 'data' parameter:", error);
+        extractedData = [];
+    }
+
+    return { clientName, collectionName, extractedData };
+}
+
 
   function initExtraRows() {
     // Convert NodeList -> Array so we can index them easily
@@ -125,11 +126,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	  signatureDateLabels.forEach(label => {
 		label.textContent = formattedDate;
 	  });
-    chrome.runtime.sendMessage(
-      "fjgodpiekafafncggbbagckcmgjnnbmk",
-      { type: "getExtractedData" },
-      function (response) {
-        console.log("Data received:", response);
+	const response = getURLParams(); // Get data from URL instead of Chrome storage
+	console.log("Data retrieved from URL:", response);
+
 
         // Doucheset references
         const dsCode  = document.getElementById("doucheset-code");
@@ -2243,8 +2242,6 @@ highlightEmptyFields();
 			}
 		  }
 		}
-	  } // end callback
-    ); // end runtime.sendMessage
   }); // end loadDataButton click
   
 		// ------------------------------
