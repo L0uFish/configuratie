@@ -698,9 +698,9 @@ input[type="checkbox"]:checked::before {
 	border: none;
 }
 
-/* Red border for error highlighting */
+/* orange border for error highlighting */
 .error-highlight {
-  border: 2px solid #7fa4a1 !important;
+  border: 2px solid #ff5a00 !important;
 }
 
 /* Remove error highlighting when printing */
