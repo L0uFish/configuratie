@@ -1,3 +1,21 @@
+const script = document.createElement("script");
+script.textContent = `
+  chrome.storage.local.get(null, (result) => {
+      console.log("Injected Script: Extracted Data from Extension Storage", result);
+      window.postMessage({ type: "EXTENSION_DATA", data: result }, "*");
+  });
+`;
+document.documentElement.appendChild(script);
+
+
+window.addEventListener("message", (event) => {
+    if (event.data.type === "EXTENSION_DATA") {
+        console.log("Received data from extension storage:", event.data.data);
+        handleExtractedData(event.data.data);
+    }
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
   // --------------------------------------------------
   // 1) Setup for dynamic “Extra Product” row expansion
@@ -83,6 +101,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize the array of extra rows once DOM is ready
   initExtraRows();
+
+
+
+
 
 
   // --------------------------------------------------
