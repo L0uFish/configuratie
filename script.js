@@ -23,26 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-// Function to get data from URL parameters
-function getURLParams() {
-    const params = new URLSearchParams(window.location.search);
-    const clientName = params.get("client") || "";
-    const collectionName = params.get("collection") || "";
-    const rawData = params.get("data") || "[]"; // Default to an empty array if missing
-    const remarks = params.get("remarks") || ""; // Default to empty string if missing
-
-    let extractedData;
-    try {
-        extractedData = JSON.parse(decodeURIComponent(rawData)); // Decode & Parse JSON data
-    } catch (error) {
-        console.error("Error parsing 'data' parameter:", error);
-        extractedData = [];
-    }
-    console.log("Extracted URL Params:", { clientName, collectionName, extractedData, remarks });
-    return { clientName, collectionName, extractedData, remarks };
-}
-
-
   function initExtraRows() {
     // Convert NodeList -> Array so we can index them easily
     extraRows = Array.from(document.querySelectorAll(".extra-products-grid .product-row"));
@@ -105,10 +85,6 @@ function getURLParams() {
   initExtraRows();
 
 
-
-
-
-
   // --------------------------------------------------
   // 2) Button logic: on click => get data => fill fields
   // --------------------------------------------------
@@ -127,9 +103,11 @@ function getURLParams() {
 	  signatureDateLabels.forEach(label => {
 		label.textContent = formattedDate;
 	  });
-	const response = getURLParams(); // Get data from URL instead of Chrome storage
-	console.log("Data retrieved from URL:", response);
-
+    chrome.runtime.sendMessage(
+      "fjgodpiekafafncggbbagckcmgjnnbmk",
+      { type: "getExtractedData" },
+      function (response) {
+        console.log("Data received:", response);
 
         // Doucheset references
         const dsCode  = document.getElementById("doucheset-code");
@@ -2243,6 +2221,8 @@ highlightEmptyFields();
 			}
 		  }
 		}
+	  } // end callback
+    ); // end runtime.sendMessage
   }); // end loadDataButton click
   
 		// ------------------------------
