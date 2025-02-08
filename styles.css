@@ -21,7 +21,7 @@ html, body {
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0 !important;
     border: 1px solid #ddd;
     border-radius: 5px;
     flex: 1; /* Fills the available vertical space */
@@ -707,6 +707,10 @@ input[type="checkbox"]:checked::before {
 @media print {
   .error-highlight {
     border: none !important;
+  }
+  body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
   }
   
 }
