@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		label.textContent = formattedDate;
 	  });
     chrome.runtime.sendMessage(
-      "fjgodpiekafafncggbbagckcmgjnnbmk",
+      "adfmkooomcpdikkgalpdmjfhjlciemlj",
       { type: "getExtractedData" },
       function (response) {
         console.log("Data received:", response);
