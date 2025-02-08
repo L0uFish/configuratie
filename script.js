@@ -38,7 +38,7 @@ function getURLParams() {
         console.error("Error parsing 'data' parameter:", error);
         extractedData = [];
     }
-
+    console.log("Extracted URL Params:", { clientName, collectionName, extractedData, remarks });
     return { clientName, collectionName, extractedData, remarks };
 }
 
