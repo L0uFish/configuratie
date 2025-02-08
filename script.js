@@ -29,6 +29,7 @@ function getURLParams() {
     const clientName = params.get("client") || "";
     const collectionName = params.get("collection") || "";
     const rawData = params.get("data") || "[]"; // Default to an empty array if missing
+    const remarks = params.get("remarks") || ""; // Default to empty string if missing
 
     let extractedData;
     try {
@@ -38,7 +39,7 @@ function getURLParams() {
         extractedData = [];
     }
 
-    return { clientName, collectionName, extractedData };
+    return { clientName, collectionName, extractedData, remarks };
 }
 
 
