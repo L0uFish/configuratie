@@ -2225,7 +2225,7 @@ highlightEmptyFields();
     ); // end runtime.sendMessage
   }); // end loadDataButton click
   
-		// ------------------------------
+// ------------------------------
 // Sync "client-number" inputs
 // ------------------------------
 const clientNumberInputs = document.querySelectorAll(".client-number + input");
@@ -2233,10 +2233,10 @@ const clientNumberInputs = document.querySelectorAll(".client-number + input");
 function syncClientNumberInput(event) {
     const value = event.target.value;
     clientNumberInputs.forEach(input => {
-        if (input !== event.target) {
+        if (input !== event.target && input.value !== value) {
             input.value = value;
-            // Trigger input event manually to remove error highlight
-            input.dispatchEvent(new Event("input", { bubbles: true }));
+            // Prevent infinite loop by using a timeout
+            setTimeout(() => input.dispatchEvent(new Event("input", { bubbles: true })), 0);
         }
     });
 }
@@ -2253,10 +2253,10 @@ const advisorInputs = document.querySelectorAll(".advisor + input");
 function syncAdvisorInput(event) {
     const value = event.target.value;
     advisorInputs.forEach(input => {
-        if (input !== event.target) {
+        if (input !== event.target && input.value !== value) {
             input.value = value;
-            // Trigger input event manually to remove error highlight
-            input.dispatchEvent(new Event("input", { bubbles: true }));
+            // Prevent infinite loop by using a timeout
+            setTimeout(() => input.dispatchEvent(new Event("input", { bubbles: true })), 0);
         }
     });
 }
