@@ -2226,40 +2226,44 @@ highlightEmptyFields();
   }); // end loadDataButton click
   
 		// ------------------------------
-		// Sync "client-number" inputs
-		// ------------------------------
-		const clientNumberInputs = document.querySelectorAll(".client-number + input");
+// Sync "client-number" inputs
+// ------------------------------
+const clientNumberInputs = document.querySelectorAll(".client-number + input");
 
-		function syncClientNumberInput(event) {
-			const value = event.target.value;
-			clientNumberInputs.forEach(input => {
-				if (input !== event.target) {
-					input.value = value;
-				}
-			});
-		}
+function syncClientNumberInput(event) {
+    const value = event.target.value;
+    clientNumberInputs.forEach(input => {
+        if (input !== event.target) {
+            input.value = value;
+            // Trigger input event manually to remove error highlight
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+        }
+    });
+}
 
-		clientNumberInputs.forEach(input => {
-			input.addEventListener("input", syncClientNumberInput);
-		});
+clientNumberInputs.forEach(input => {
+    input.addEventListener("input", syncClientNumberInput);
+});
 
-		// ------------------------------
-		// Sync "advisor" inputs
-		// ------------------------------
-		const advisorInputs = document.querySelectorAll(".advisor + input");
+// ------------------------------
+// Sync "advisor" inputs
+// ------------------------------
+const advisorInputs = document.querySelectorAll(".advisor + input");
 
-		function syncAdvisorInput(event) {
-			const value = event.target.value;
-			advisorInputs.forEach(input => {
-				if (input !== event.target) {
-					input.value = value;
-				}
-			});
-		}
+function syncAdvisorInput(event) {
+    const value = event.target.value;
+    advisorInputs.forEach(input => {
+        if (input !== event.target) {
+            input.value = value;
+            // Trigger input event manually to remove error highlight
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+        }
+    });
+}
 
-		advisorInputs.forEach(input => {
-			input.addEventListener("input", syncAdvisorInput);
-		});
+advisorInputs.forEach(input => {
+    input.addEventListener("input", syncAdvisorInput);
+});
   
 	// -----------------------------------
 	// 	photo upload
