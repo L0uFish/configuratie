@@ -1308,8 +1308,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const dpMaat = document.getElementById("glas-draaipaneel-maat");
                 const dpCode = document.getElementById("glas-draaipaneel-code");
                 if (dpDesc && dpMaat && dpCode) {
-                  dpDesc.value = "180° naar binnen";
-                  dpMaat.value = "450x2070";
+                  dpDesc.value = "";
+                  dpMaat.value = "";
                   dpCode.value = "";
                   console.log("Draaideel set for Ekinox Duo: 180°, 450x2070, code empty");
                 }
@@ -1489,8 +1489,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const dpDesc = document.getElementById("glas-draaipaneel-description");
                 const dpMaat = document.getElementById("glas-draaipaneel-maat");
                 if (dpDesc && dpMaat) {
-                  dpDesc.value = "180° naar binnen";
-                  dpMaat.value = "350x1983";
+                  dpDesc.value = "";
+                  dpMaat.value = "";
                   console.log("Draaipaneel set for main Duo");
                 }
                 const dpCode = document.getElementById("glas-draaipaneel-code");
